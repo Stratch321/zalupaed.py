@@ -11,13 +11,9 @@ baseUrl = 'https://hh.ru/search/vacancy?text='+text+'&area=1'
 request = req.get('https://hh.ru/search/vacancy?text=Kotlin&area=1', headers={'User-Agent': 'Custom'})
 bsparse = bs(request.text, "lxml")
 f = 0
-plitka = bsparse.find_all('div', 'serp-item')
-for i in plitka:
-    print(i.text)
-    print("____")
-    f = f +1
-    print(f)
-
+plitka = bsparse.findAll('div', 'serp-item')
+for x in plitka:
+    print(x.h3.text)
 def get_vacname():
     strim = bsparse.find_all('a', 'serp-item__title')
 def get_sallary():
